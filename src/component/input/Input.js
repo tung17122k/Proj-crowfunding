@@ -21,7 +21,7 @@ const Input = ({
         type={type}
         className={`w-full px-6 py-4 text-sm font-medium border  rounded-xl text-text1 bg-transparent dark:border-darkStroke dark:placeholder:text-text2 dark:text-white ${
           error.length > 0
-            ? "border-error placeholder:text-error "
+            ? "border-error placeholder:text-error text-error"
             : "border-strock  placeholder:text-text4"
         } ${children ? "pr-16" : ""}`}
         placeholder={placeholder}

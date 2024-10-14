@@ -10,7 +10,7 @@ import { Label } from "../component/label";
 import { Input } from "../component/input";
 import { IconEyeToggle } from "component/icons";
 import { Checkbox } from "component/checkbox";
-import { Button } from "component/button";
+import { Button, ButtonGoogle } from "component/button";
 
 const schema = yup.object({
   fullname: yup.string().required("This field is required"),
@@ -49,10 +49,7 @@ const SignUpPage = (props) => {
             Sign in
           </Link>
         </p>
-        <button className="flex items-center justify-center w-full py-3 mb-5 text-base font-semibold border gap-x-3 border-strock rounded-xl text-text2 dark:text-white dark:border-darkStroke">
-          <img src="/icon-google.png" alt="icon-google" />
-          <span>Sign up with Google</span>
-        </button>
+        <ButtonGoogle></ButtonGoogle>
         <p className="mb-4 text-xs font-normal text-center lg:text-sm lg:mb-8 text-text2 dark:text-white">
           Or sign up with email
         </p>
