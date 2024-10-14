@@ -3,6 +3,16 @@
 @tailwind utilities;
 @layer base {
   body {
-    @apply font-body;
+    @apply font-primary text-base;
+    line-height: 1.5;
+  }
+  input {
+    @apply outline-none;
+  }
+  /* CSS override để ẩn biểu tượng con mắt cho input password */
+  input[type="password"]::-ms-reveal, /* Cho Internet Explorer */
+  input[type="password"]::-ms-clear,   /* Cho Internet Explorer */
+  input[type="password"]::-webkit-textfield-decoration-container {
+    display: none;
   }
 }
