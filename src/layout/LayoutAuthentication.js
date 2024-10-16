@@ -18,7 +18,7 @@ const LayoutAuthentication = (props) => {
         <img srcSet="/logo.png 2x" alt="crowfunding-app" />
       </Link>
       <div className="w-full max-w-[556px] bg-white dark:bg-darkSecondary rounded-lg px-5 py-8 lg:px-16 lg:py-12 mx-auto">
-        <h1 className="mb-1 text-lg font-semibold lg:text-xl lg:mb-3 text-text1 dark:text-white text-center">
+        <h1 className="mb-1 text-lg font-semibold text-center lg:text-xl lg:mb-3 text-text1 dark:text-white">
           {heading}
         </h1>
         {children}
@@ -33,5 +33,5 @@ LayoutAuthentication.propTypes = {
 };
 
 export default withErrorBoundary(LayoutAuthentication, {
-  fallback: ErrorComponent,
+  FallbackComponent: ErrorComponent,
 });

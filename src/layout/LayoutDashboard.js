@@ -8,8 +8,8 @@ const LayoutDashboard = ({ children }) => {
       <DashboardTopbar></DashboardTopbar>
       <div className="flex items-start gap-x-10">
         <DashboardSidebar></DashboardSidebar>
+        <div className="flex-1">{children}</div>
       </div>
-      <div>{children}</div>
     </div>
   );
 };
