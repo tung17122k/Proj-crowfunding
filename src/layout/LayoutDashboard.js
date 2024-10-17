@@ -2,6 +2,7 @@ import Overlay from "component/common/Overlay";
 import DashboardSidebar from "modules/dashboard/DashboardSidebar";
 import DashboardTopbar from "modules/dashboard/DashboardTopbar";
 import React from "react";
+import { Outlet } from "react-router";
 
 const LayoutDashboard = ({ children }) => {
   return (
@@ -10,7 +11,9 @@ const LayoutDashboard = ({ children }) => {
       <DashboardTopbar></DashboardTopbar>
       <div className="flex items-start gap-x-10">
         <DashboardSidebar></DashboardSidebar>
-        <div className="flex-1">{children}</div>
+        <div className="flex-1">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

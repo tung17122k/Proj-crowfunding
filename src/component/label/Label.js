@@ -7,7 +7,8 @@ const Label = ({ children, htmlFor = "", className = "" }) => {
     <label
       htmlFor={htmlFor}
       className={classNames(
-        "inline-block text-sm font-medium cursor-pointer text-text2 dark:text-text3, className"
+        "inline-block self-start text-sm font-medium cursor-pointer text-text2 dark:text-text3",
+        className
       )}
     >
       {children}

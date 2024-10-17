@@ -30,7 +30,7 @@ const Input = ({
         {...rest}
       />
       {children && (
-        <span className="absolute right-6 top-2/4 -translate-y-2/4 cursor-pointer select-none">
+        <span className="absolute cursor-pointer select-none right-6 top-2/4 -translate-y-2/4">
           {children}
         </span>
       )}

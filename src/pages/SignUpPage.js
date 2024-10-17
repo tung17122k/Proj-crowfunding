@@ -106,7 +106,7 @@ const SignUpPage = (props) => {
               checked={acceptTerm}
               onChange={handleToggleTerm}
             >
-              <p className="flex-1 text-xs lg:text-sm text-text2 select-none dark:text-text3">
+              <p className="flex-1 text-xs select-none lg:text-sm text-text2 dark:text-text3">
                 I agree to the{" "}
                 <span className="underline text-secondary ">Terms of Use</span>{" "}
                 and have read and understand the{" "}
@@ -115,7 +115,12 @@ const SignUpPage = (props) => {
               </p>
             </Checkbox>
           </div>
-          <Button className="w-full bg-primary" type="submit" isLoading={false}>
+          <Button
+            className="w-full"
+            type="submit"
+            isLoading={false}
+            kind="primary"
+          >
             Create my account
           </Button>
         </form>

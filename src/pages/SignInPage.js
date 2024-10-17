@@ -83,11 +83,16 @@ const SignInPage = (props) => {
             </Input>
           </FormGroup>
           <FormGroup>
-            <span className="text-primary inline-block text-sm font-medium text-right">
+            <span className="inline-block text-sm font-medium text-right text-primary">
               Forgot password
             </span>
           </FormGroup>
-          <Button className="w-full bg-primary" type="submit" isLoading={false}>
+          <Button
+            className="w-full "
+            type="submit"
+            isLoading={false}
+            kind="primary"
+          >
             Sign in
           </Button>
         </form>
