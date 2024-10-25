@@ -11,6 +11,7 @@ import { Input } from "../component/input";
 import { IconEyeToggle } from "component/icons";
 import { Checkbox } from "component/checkbox";
 import { Button, ButtonGoogle } from "component/button";
+import Term from "component/Term";
 
 const schema = yup.object({
   fullname: yup.string().required("This field is required"),
@@ -100,21 +101,7 @@ const SignUpPage = (props) => {
               ></IconEyeToggle>
             </Input>
           </FormGroup>
-          <div className="flex items-start gap-5 mb-5">
-            <Checkbox
-              name="term"
-              checked={acceptTerm}
-              onChange={handleToggleTerm}
-            >
-              <p className="flex-1 text-xs select-none lg:text-sm text-text2 dark:text-text3">
-                I agree to the{" "}
-                <span className="underline text-secondary ">Terms of Use</span>{" "}
-                and have read and understand the{" "}
-                <span className="underline text-secondary">Privacy policy</span>
-                .
-              </p>
-            </Checkbox>
-          </div>
+          <Term></Term>
           <Button
             className="w-full"
             type="submit"

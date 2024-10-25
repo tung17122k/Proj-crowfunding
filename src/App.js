@@ -3,6 +3,7 @@ import LayoutDashboard from "layout/LayoutDashboard";
 import CampaignView from "modules/campaign/CampaignView";
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import LayoutPayment from "layout/LayoutPayment";
 
 const customStyles = {
   content: {},
@@ -14,8 +15,10 @@ Modal.defaultStyles = {};
 const SignUpPage = lazy(() => import("./pages/SignUpPage"));
 const SignInPage = lazy(() => import("./pages/SignInPage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const PaymentPage = lazy(() => import("./pages/PaymentPage"));
 const CampaignPage = lazy(() => import("./pages/CampaignPage"));
 const StartCampaign = lazy(() => import("./pages/StartCampaign"));
+const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 
 function App() {
   return (
@@ -27,6 +30,7 @@ function App() {
             path="/campaign"
             element={<CampaignPage></CampaignPage>}
           ></Route>
+          <Route path="/payment" element={<PaymentPage></PaymentPage>}></Route>
           <Route
             path="/start-campaign"
             element={<StartCampaign></StartCampaign>}
@@ -34,6 +38,12 @@ function App() {
           <Route
             path="/campaign/:slug"
             element={<CampaignView></CampaignView>}
+          ></Route>
+        </Route>
+        <Route element={<LayoutPayment></LayoutPayment>}>
+          <Route
+            path="/checkout"
+            element={<CheckoutPage></CheckoutPage>}
           ></Route>
         </Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>

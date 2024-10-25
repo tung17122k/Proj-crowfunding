@@ -7,7 +7,7 @@ const Checkbox = ({
   children,
 }) => {
   return (
-    <div className="flex items-start gap-x-5">
+    <div className="flex items-start select-none gap-x-5">
       <label
         className={`inline-flex items-center justify-center p-1 w-5 h-5 text-white border-2 rounded cursor-pointer  ${
           checked
