@@ -19,6 +19,7 @@ const PaymentPage = lazy(() => import("./pages/PaymentPage"));
 const CampaignPage = lazy(() => import("./pages/CampaignPage"));
 const StartCampaign = lazy(() => import("./pages/StartCampaign"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
+const ShippingPage = lazy(() => import("./pages/ShippingPage"));
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function App() {
           <Route
             path="/checkout"
             element={<CheckoutPage></CheckoutPage>}
+          ></Route>
+          <Route
+            path="/shipping"
+            element={<ShippingPage></ShippingPage>}
           ></Route>
         </Route>
         <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
