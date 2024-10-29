@@ -53,3 +53,9 @@
 .scroll-hidden::-webkit-scrollbar {
   display: none;
 }
+.react-datepicker__day--selected {
+  background-color: #1dc071 !important;
+}
+.react-datepicker__day:hover {
+  background-color: #1dc07146 !important;
+}
