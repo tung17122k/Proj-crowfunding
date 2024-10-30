@@ -5,8 +5,6 @@ import useToggleValue from "hooks/useToggleValue";
 const Term = () => {
   const { value: acceptTerm, handleToggleValue: handleToggleTerm } =
     useToggleValue();
-  const { value: showPassword, handleToggleValue: handleTogglePassword } =
-    useToggleValue();
   return (
     <div className="flex items-start gap-5 mb-5">
       <Checkbox name="term" checked={acceptTerm} onChange={handleToggleTerm}>

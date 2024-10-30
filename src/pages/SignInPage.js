@@ -10,6 +10,8 @@ import { Label } from "component/label";
 import { Input } from "component/input";
 import { IconEyeToggle } from "component/icons";
 import { Button, ButtonGoogle } from "component/button";
+import { useDispatch } from "react-redux";
+import { authLogin } from "store/auth/auth-slice";
 
 const schema = yup.object({
   email: yup.string().email().required("Invalid email address"),
@@ -32,19 +34,19 @@ const SignInPage = (props) => {
 
   const { value: showPassword, handleToggleValue: handleTogglePassword } =
     useToggleValue();
+  const dispatch = useDispatch();
 
-  const handleSignIn = (values) => {
-    console.log(values);
+  const handleSignIn = async (values) => {
+    dispatch(authLogin(values));
   };
-  // console.log(errors);
 
   return (
     <div>
       <LayoutAuthentication heading="Welcome Back!">
         <p className="mb-6 text-xs font-normal text-center lg:text-sm text-text3 lg:mb-8">
           Dont have an account?{" "}
-          <Link to="/sign-up" className="font-medium underline text-primary">
-            Sign up
+          <Link to="/register" className="font-medium underline text-primary">
+            Register
           </Link>
         </p>
         <ButtonGoogle text="Sign in with Google"></ButtonGoogle>
