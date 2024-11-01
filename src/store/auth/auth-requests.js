@@ -5,7 +5,22 @@ export const requestAuthRegister = (data) => {
 };
 
 export const requestAuthLogin = (data) => {
-  console.log(data);
-
   return axios.post("/auth/login", { ...data });
+};
+
+export const requestAuthFetchMe = (token) => {
+  if (!token) return;
+  return axios.get("/me", {
+    headers: {
+      Authorization: `Bearers ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const requestAuthRefreshToken = (token) => {
+  if (!token) return;
+  return axios.post("/token", {
+    refreshToken: token,
+  });
 };

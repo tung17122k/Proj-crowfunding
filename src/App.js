@@ -4,10 +4,10 @@ import CampaignView from "modules/campaign/CampaignView";
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import LayoutPayment from "layout/LayoutPayment";
-
-const customStyles = {
-  content: {},
-};
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { authRefreshToken, authUpdateUser } from "store/auth/auth-slice";
+import { getToken, logOut } from "utils/auth";
 
 Modal.setAppElement("#root");
 Modal.defaultStyles = {};
@@ -22,6 +22,23 @@ const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 const ShippingPage = lazy(() => import("./pages/ShippingPage"));
 
 function App() {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (user && user.id) {
+      const { access_token } = getToken();
+      dispatch(authUpdateUser({ user: user, accessToken: access_token }));
+    } else {
+      // user hết hạn
+      const { refresh_token } = getToken();
+      if (refresh_token) {
+        dispatch(authRefreshToken(refresh_token));
+      } else {
+        dispatch(authUpdateUser({}));
+        logOut();
+      }
+    }
+  }, [dispatch, user]);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
