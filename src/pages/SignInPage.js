@@ -5,14 +5,13 @@ import FormGroup from "component/common/FormGroup";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Label } from "component/label";
 import { Input } from "component/input";
 import { IconEyeToggle } from "component/icons";
 import { Button, ButtonGoogle } from "component/button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { authLogin } from "store/auth/auth-slice";
-import { useEffect } from "react";
 
 const schema = yup.object({
   email: yup.string().email().required("Invalid email address"),
@@ -40,13 +39,6 @@ const SignInPage = (props) => {
   const handleSignIn = async (values) => {
     dispatch(authLogin(values));
   };
-  const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (user && user.id) {
-      navigate("/");
-    }
-  }, [user]);
 
   return (
     <div>

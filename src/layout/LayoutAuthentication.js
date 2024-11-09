@@ -1,11 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { withErrorBoundary } from "react-error-boundary";
 import ErrorComponent from "../component/common/ErrorComponent";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const LayoutAuthentication = (props) => {
   const { children, heading = "" } = props;
+  const { user } = useSelector((state) => state.auth);
+  console.log("🚀 ~ StartCampaign ~ user:", user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user && user.email) {
+      navigate("/");
+    }
+  }, [user]);
+  if (user && user.email) return null;
 
   return (
     <div className="relative w-full min-h-screen p-10 bg-lite dark:bg-darkBg isolate">
