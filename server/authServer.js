@@ -25,6 +25,7 @@ const generateTokens = (payload) => {
   );
 
   return { accessToken, refreshToken };
+  // generateTokens trả ra accessToken, refreshToken
 };
 function updateRefreshToken(name, refreshToken) {
   console.log("updateRefreshToken ~ name", name);
