@@ -4,26 +4,22 @@ import { useEffect } from "react";
 import { axiosPrivate } from "api/axios";
 
 export default function useAxiosPrivate() {
-  // useRefreshToken => accessToken
   const refresh = useRefreshToken();
-  // auth lấy từ auth-slice
   const { auth } = useSelector((state) => state);
-  console.log(auth);
 
   useEffect(() => {
     const requestInterceptor = axiosPrivate.interceptors.request.use(
-      ((config) => {
+      (config) => {
         if (!config.headers["Authorization"]) {
-          config.headers["Authorization"] = `Bearers ${auth.accessToken}`;
+          config.headers["Authorization"] = `Bearer ${auth.accessToken}`;
         }
         return config;
       },
-      (error) => Promise.reject(error))
+      (error) => Promise.reject(error)
     );
-    // accessToken hết hạn => chạy xuống
 
-    const responseInterceptor = axiosPrivate.interceptors.use(
-      ((response) => response,
+    const responseInterceptor = axiosPrivate.interceptors.response.use(
+      (response) => response,
       async (error) => {
         const prevRequest = error.config;
         if (error?.response?.status === 403 && !prevRequest.sent) {
@@ -32,10 +28,11 @@ export default function useAxiosPrivate() {
           prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
           return axiosPrivate(prevRequest);
         }
-      })
+        return Promise.reject(error);
+      }
     );
+
     return () => {
-      // clean up
       axiosPrivate.interceptors.request.eject(requestInterceptor);
       axiosPrivate.interceptors.response.eject(responseInterceptor);
     };

@@ -5,8 +5,22 @@ import { v4 } from "uuid";
 import React, { Fragment } from "react";
 import CampaignFeature from "modules/campaign/CampaignFeature";
 import Gap from "component/common/Gap";
+import useAxiosPrivate from "hooks/useAxiosPrivate";
+import { useEffect } from "react";
 
 const DashboardPage = () => {
+  const axiosPrivate = useAxiosPrivate();
+  useEffect(() => {
+    async function fetchCampaigns() {
+      try {
+        const response = await axiosPrivate.get("/api/campaigns");
+        console.log("🚀 ~ fetchCampaigns ~ response:", response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchCampaigns();
+  }, []);
   return (
     <Fragment>
       <Heading number="4">Your campaigns</Heading>
