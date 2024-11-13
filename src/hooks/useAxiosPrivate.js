@@ -18,6 +18,7 @@ export default function useAxiosPrivate() {
       (error) => Promise.reject(error)
     );
 
+    // hết hạn refresh token xử lý ở đây
     const responseInterceptor = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -31,7 +32,7 @@ export default function useAxiosPrivate() {
         return Promise.reject(error);
       }
     );
-
+    // clean up
     return () => {
       axiosPrivate.interceptors.request.eject(requestInterceptor);
       axiosPrivate.interceptors.response.eject(responseInterceptor);
